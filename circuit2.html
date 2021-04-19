@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Distance measurement using ultrasonic sensor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Load bootstrap's CSS in head section -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>        
+        
+        <!-- Nav bar section  -->
+        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+            <div class="container">              
+                
+                    <a class="navbar-brand" href="index.html">
+                      <img src="img/AIT.png" width="150" height="" alt="">
+                    </a>
+                  
+                <a class="navbar-brand" href="index.html">SOLAR PANEL DETECTION</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html"><i class="bi bi-caret-right-square-fill"></i>Home</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br>
+        <br>
+        <br>
+
+        <div class="container">
+          <p class="h1">Distance measurement using ultrasonic sensor</p><br>
+            <div class="row">
+              <div class="col-sm">
+                <img width="" height="" src="img/distance1.png" alt="" class="card-img-top col ">
+              </div>
+              <div class="col-sm">
+                <img width="" height="" src="img/distance2.png" alt="" class="card-img-top col ">
+              </div>
+            </div><br>
+            <br>
+
+            <div class="card  border-success mb-3">
+                <div class="row">
+                  <div class="card-body col-6">
+                    <h3 class="card-header">CODE</h3><br>
+                    <p class="card-text h5">#include <LiquidCrystal.h> <br><br>
+
+                        LiquidCrystal lcd(2,3,4,5,6,7);<br><br>
+                       
+                       int trigPin=11; <br>
+                       int echoPin=10;   <br>
+                       float pingTime; <br>
+                       float targetDistance; <br>
+                       float speedOfSound=776.5; <br><br>
+                       
+                       void setup()<br>
+                       {<br>
+                         Serial.begin(9600);<br>
+                         pinMode(trigPin, OUTPUT);<br>
+                         pinMode(echoPin, INPUT);<br>
+                         <br>
+                         lcd.begin(16,2); <br>
+                         lcd.setCursor(0,0);  <br>
+                         lcd.print("Target Distance:");<br>
+                         <br>
+                       }<br>
+                       <br>
+                       void loop()<br>
+                       {<br>
+                        <br>
+                         
+                         digitalWrite(trigPin, LOW); <br>
+                         delayMicroseconds(2000); <br>
+                         digitalWrite(trigPin, HIGH); <br>
+                         delayMicroseconds(15); <br>
+                         digitalWrite(trigPin, LOW); <br>
+                         delayMicroseconds(10); <br>
+                            <br>
+                         pingTime = pulseIn(echoPin, HIGH);  <br>
+                         pingTime=pingTime/1000000;<br>
+                         pingTime=pingTime/3600; <br>
+                         targetDistance= speedOfSound * pingTime;<br>  
+                         targetDistance=targetDistance/2; <br>
+                         targetDistance= targetDistance*63360;   <br>
+                            <br>
+                         lcd.setCursor(4,1);  <br>
+                         lcd.print(targetDistance);<br>
+                         lcd.print(" inch");<br>
+                         delay(50);<br>
+                       }</p>
+                        <a href="https://www.tinkercad.com/things/cERdwL8u0dX-copy-of-distance-measurement-devices/editel?sharecode=MWBpty-a_Biq8e2NIUsbwgbd7jc5JvOJ0e0bx-aPREA" class="btn btn-primary">For Simulation</a>
+                  </div>
+                </div>
+            </div><br>
+          </div>     
+        
+ 
+         
+
+
+                
+            <div class='row'>
+                <div class='col mt-4'>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            
+                            <li class="page-item"><a class="page-link" href="circuit.html">Previous</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer section  -->
+        <nav class="navbar  navbar-dark bg-dark mt-5">
+            <div class="container">
+                <div class='mx-auto text-center text-white p-2'>
+                    <h4 class='mb-2'>Design Engineering Project</h4>                    
+                    <div>Ahmedabad Institute Of Technology © 2021</div>
+                </div>
+            </div>
+        </nav>
+        <!-- Load bootstrap's JS just before the closing body tag -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
