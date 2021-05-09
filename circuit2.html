@@ -87,15 +87,12 @@
                          pingTime = pulseIn(echoPin, HIGH);  <br>
                         
                         targetDistance = (pingTime*.0343)/2;  <br>
-                        Serial.print("Distance: ");  <br>
+                        Serial.print("Distance : ");  <br>
                         Serial.println(targetDistance);  <br>
                         delay(100);<br>
                          <br>
                             <br>
-                         lcd.setCursor(4,1);  <br>
-                         lcd.print(targetDistance);<br>
-                         lcd.print(" inch");<br>
-                         delay(50);<br>
+                         
                        }</p>
                         <a href="https://www.tinkercad.com/things/cERdwL8u0dX-copy-of-distance-measurement-devices/editel?sharecode=uG-4WiVf6UqzzpsybcRUwKEVjHZEYmnnlEJAofOePdc" class="btn btn-primary">For Simulation</a>
                   </div>
