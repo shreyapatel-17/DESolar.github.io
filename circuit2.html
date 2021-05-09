@@ -85,11 +85,12 @@
                          delayMicroseconds(10); <br>
                             <br>
                          pingTime = pulseIn(echoPin, HIGH);  <br>
-                         pingTime=pingTime/1000000;<br>
-                         pingTime=pingTime/3600; <br>
-                         targetDistance= speedOfSound * pingTime;<br>  
-                         targetDistance=targetDistance/2; <br>
-                         targetDistance= targetDistance*63360;   <br>
+                        
+                        targetDistance = (pingTime*.0343)/2;  <br>
+                        Serial.print("Distance: ");  <br>
+                        Serial.println(targetDistance);  <br>
+                        delay(100);<br>
+                         <br>
                             <br>
                          lcd.setCursor(4,1);  <br>
                          lcd.print(targetDistance);<br>
